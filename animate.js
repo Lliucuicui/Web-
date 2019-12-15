@@ -30,7 +30,7 @@ function animate(obj,json,callback){
 				isStop = false;
 			}
 		}
-		if(isStop){tr
+		if(isStop){
 			clearInterval(obj.timer);
 			callback&&callback();
 		}
