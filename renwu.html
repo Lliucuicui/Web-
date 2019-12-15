@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" href="renwu.css">
+	<script src="animate.js"></script>
+</head>
+<body>
+	<div class="box1">
+		<img src="images/a15.png" class="img1">
+		<div class="box2">
+			<span class="spa" id="spa">[温馨提示]最近有不少不法分子在网上骗人，请大家注意!!!</span>
+		</div>
+	</div>
+	<div class="box" id="box">
+		<div class="slider" id="slider">
+			<div class="slide"><img src="images/b5.png"></div>
+			<div class="slide"><img src="images/b1.png"></div>
+			<div class="slide"><img src="images/b2.png"></div>
+			<div class="slide"><img src="images/b3.png"></div>
+			<div class="slide"><img src="images/b4.png"></div>
+			<div class="slide"><img src="images/b5.png"></div>
+			<div class="slide"><img src="images/b1.png"></div>
+		</div>
+		<span id="left"><</span>
+		<span id="right">></span>
+		<ul class="nav" id="nav">
+			<li class="active">1</li>
+			<li>2</li>
+			<li>3</li>
+			<li>4</li>
+			<li>5</li>
+		</ul>
+	</div>
+</body>
+	<script>
+		var box=document.getElementById("box");
+		var nav=document.getElementById("nav");
+		var lilist=document.getElementById("nav").children;
+		var left=document.getElementById("left");
+		var right=document.getElementById("right");
+		var spa=document.getElementById("spa");
+		var num=300;
+		setInterval(function(){
+				spa.style.marginLeft=num+"px";
+				num--;
+				while(num==-400){
+					num=880;
+				}
+				
+			},10);
+		var ismoving=false;
+		var index=1;
+		function next(){
+			if(ismoving){
+				return;
+			}
+			ismoving=true;
+			index++;
+			change();
+			animate(slider,{left:-1200*index},function(){
+				if(index==6){
+					slider.style.left="-1200px";
+					index=1;
+				}
+				ismoving=false;
+			});
+		}
+		var timer=setInterval(next,2000);
+		box.onmouseover=function(){
+			animate(left,{opacity:50});
+			animate(right,{opacity:50});
+			clearInterval(timer);
+		}
+		box.onmouseout=function(){
+			animate(left,{opacity:0.5});
+			animate(right,{opacity:0.5});
+			timer=setInterval(function(){
+				index++;
+				change();
+				animate(slider,{left:-1200*index},function(){
+				if(index==6){
+					slider.style.left="-1200px";
+					index=1;
+				}
+			});
+		},2000);
+	}
+		right.onclick=next;
+		left.onclick=function(){
+			if(ismoving){
+				return;
+			}
+			ismoving=true;
+			index--;
+			change();
+			animate(slider,{left:-1200*index},function(){
+				if(index==0){
+					slider.style.left="-6000px";
+					index=5;
+				}
+				ismoving=false;
+			});
+		}
+		for(var i=0;i<=lilist.length;++i){
+			lilist[i].idx=i;
+			lilist[i].onclick=function(){
+				index=this.idx+1;
+				animate(slider,{left:-1200*index});
+				change(); 
+			}
+		}
+		function change(){
+			for(var i=0;i<lilist.length;++i){
+				lilist[i].className="";
+			}
+			if(index==6){
+				lilist[0].className="active";
+			}
+			else if(index==0){
+				lilist[4].className="active";
+			}
+			else{
+				lilist[index-1].className="active";
+			}
+			
+		}
+	</script>
+</html>

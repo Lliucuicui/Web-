@@ -1,0 +1,94 @@
+/*
+* @Author: Administrator
+* @Date:   2019-12-11 18:22:12
+* @Last Modified by:   Administrator
+* @Last Modified time: 2019-12-12 21:27:44
+*/
+*{
+	padding: 0;
+	margin: 0;
+}
+ui,li{
+	list-style: none;
+}
+.box1{
+	background-color: #ccc;
+	height: 20px;
+}
+.box2{
+	display: inline-block;
+	position: relative;
+	width: 900px;
+	height: 20px;
+	margin-left: 0px;
+	overflow: hidden;
+}
+.img1{
+	margin-left: 250px;
+}
+.spa{
+	position: absolute;
+	color: red;
+}
+.box{
+	width: 1200px;
+	height: 397px;
+	margin: 100px auto;
+	position: relative;
+	overflow: hidden;
+}
+.slider{
+	width: 8400px;
+	position: absolute;
+	left: -1200px;
+}
+.slide{
+	float: left;
+	width: 1200px;
+	height: 397px;
+	overflow: hidden;
+}
+.slide.img{
+	height: 397px;
+}
+#left{
+	width: 30px;
+	height: 50px;
+	text-align: center;
+	line-height: 50px;
+	background-color: red;
+	position: absolute;
+	top: 190px;
+	left: 30px;
+	opacity: 0.5;
+}
+#right{
+	width: 30px;
+	height: 50px;
+	text-align: center;
+	line-height: 50px;
+	background-color: red;
+	position: absolute;
+	top: 190px;
+	right: 30px;
+	opacity: 0.5;
+}
+.nav{
+	display: inline-block;
+	position: absolute;
+	left: 500px;
+	bottom: 20px;
+}
+.nav>li{
+	float: left;
+	width: 20px;
+	height: 20px;
+	background-color: #ccc;
+	margin: 0 10px;
+	border-radius: 50%;
+	text-align: center;
+}
+.nav .active{
+	background: red;
+	color: white;
+}
